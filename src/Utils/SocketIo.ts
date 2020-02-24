@@ -1,13 +1,17 @@
-// import React from 'react'
+import React from 'react'
 import io from 'socket.io-client'
 
-const useSocketIo = () => {
-  const URL = 'http://localhost:1111'
-  const client = io(URL)
-  
-  client.on('blah', () => {
-    console.log('got message')
-  })
+interface Params {
+  url: string
+}
+
+const useSocketIo = (params: Params) => {
+
+  const [ client, setClient ] = React.useState<SocketIOClient.Socket>()
+
+  React.useEffect(() => {
+    setClient(io(params.url))
+  }, [])
 
   return client
 }
