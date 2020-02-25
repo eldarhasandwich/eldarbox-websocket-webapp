@@ -35,7 +35,7 @@ const App: React.FC = () => {
       <button
         onClick={() => {
           console.log('click')
-          socket.emit(eventName, JSON.stringify(eventObject))
+          socket.emit(eventName, JSON.parse(eventObject))
         }}
       >
         Send

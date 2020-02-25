@@ -10,8 +10,14 @@ const useSocketIo = (params: Params) => {
   const [ client, setClient ] = React.useState<SocketIOClient.Socket>()
 
   React.useEffect(() => {
-    setClient(io(params.url))
-  }, [])
+    const client = io(params.url)
+    
+    client.on('index-gameCreated', (message: unknown) => {
+      console.log('created game', { message })
+    })
+
+    setClient(client)
+  }, [params.url])
 
   return client
 }
