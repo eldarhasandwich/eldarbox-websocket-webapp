@@ -9,6 +9,14 @@ const App: React.FC = () => {
     url: 'http://localhost:1111'
   })
 
+  React.useEffect(() => {
+    if (!socket) return
+
+    socket.on('index-gameCreated', (message: unknown) => {
+      console.log('created game', { message })
+    })
+  }, [socket])
+
   if (!socket) {
     return (<div>loading socket</div>)
   }
