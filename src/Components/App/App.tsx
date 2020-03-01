@@ -20,6 +20,10 @@ const App: React.FC = () => {
       console.log('game joined', { message })
     })
 
+    socket.on('stateUpdate', (message: unknown) => {
+      console.log('stateUpdate', { message })
+    })
+
     socket.on('index-error', (message: unknown) => {
       console.log('error', { message })
     })
