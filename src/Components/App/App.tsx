@@ -15,6 +15,14 @@ const App: React.FC = () => {
     socket.on('index-gameCreated', (message: unknown) => {
       console.log('created game', { message })
     })
+
+    socket.on('index-gameJoined', (message: unknown) => {
+      console.log('game joined', { message })
+    })
+
+    socket.on('index-error', (message: unknown) => {
+      console.log('error', { message })
+    })
   }, [socket])
 
   if (!socket) {
