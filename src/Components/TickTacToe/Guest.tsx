@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Board from './Board'
+
 interface Props {
   socket: SocketIOClient.Socket
   gameState?: any
@@ -30,7 +32,7 @@ const Guest: React.FC<Props> = (props) => {
     <div>
       <h1>Guest</h1>
 
-      { !gameState && (
+      { !gameState && ( // we are NOT in a game
         <div>
           <input value={playerName} onChange={(e) => { setPlayerName(e.target.value) }} /> 
           <br/>
@@ -48,9 +50,9 @@ const Guest: React.FC<Props> = (props) => {
         </div>
       )}
 
-      { gameState && (
+      { gameState && ( // we are in a game
         <div>
-          
+          <Board board={gameState.state.board} />
         </div>
       )}
       

@@ -6,7 +6,6 @@ const TickTacToeType = 0
 
 interface Props {
   socket: SocketIOClient.Socket
-  gameState?: any
 }
 
 export const Master: React.FC<Props> = (props) => {
@@ -46,11 +45,9 @@ export const Master: React.FC<Props> = (props) => {
             <p>player: {p.name}</p>
           ) }
 
-          {/* <div>{ JSON.stringify(props.gameState) }</div> */}
-
           {
-            props.gameState?.state.board && (
-              <Board board={props.gameState.state.board} />
+            gameState.state.board && (
+              <Board board={gameState.state.board} />
             )
           }
         </div>
