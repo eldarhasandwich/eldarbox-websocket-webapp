@@ -12,7 +12,6 @@ export const Master: React.FC<Props> = (props) => {
 
   const [ gameState, setGameState ] = React.useState<any | undefined>(undefined)
 
-
   React.useEffect(() => {
     props.socket.emit('index-createRoom', {
       gameTypeId: TickTacToeType

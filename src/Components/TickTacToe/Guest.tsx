@@ -28,6 +28,20 @@ const Guest: React.FC<Props> = (props) => {
     })
   }, [props.socket])
 
+  const SendPlaceCommand = (position: { x: number, y: number }) => {
+    props.socket.emit('gameCommand', {
+      messageType: 'place',
+      invokingPlayer: playerName,
+      position
+    })
+  }
+
+  // const SendResetCommand = () => {
+  //   props.socket.emit('gameCommand', {
+  //     messageType: 'newGame'
+  //   })
+  // }
+
   return (
     <div>
       <h1>Guest</h1>
@@ -39,7 +53,6 @@ const Guest: React.FC<Props> = (props) => {
           <input value={connectCode} onChange={(e) => { setConnectCode(e.target.value) }} /> 
           <br/>
           <button onClick={() => {
-            console.log('click', { playerName, connectCode })
             props.socket.emit('index-joinRoom', {
               playerName,
               connectCode
@@ -52,7 +65,10 @@ const Guest: React.FC<Props> = (props) => {
 
       { gameState && ( // we are in a game
         <div>
-          <Board board={gameState.state.board} />
+          <Board 
+            board={gameState.state.board}
+            placeCommand={SendPlaceCommand} 
+          />
         </div>
       )}
       

@@ -7,7 +7,7 @@ export const TileContent = styled.div`
   width: 100%;
   height: 100%;
 
-  font-size: 40px;
+  font-size: 100px;
 `
 
 export const Tile = styled.div`
@@ -22,7 +22,8 @@ export const Row = styled.div`
 
   flex-grow: 1;
 
-  width: 500px;
+  width: 100vw;
+  max-width: 500px;
 `
 
 export const Board = styled.div`
