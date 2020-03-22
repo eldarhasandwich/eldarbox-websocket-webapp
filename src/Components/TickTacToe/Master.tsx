@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Board from './Board'
+
 const TickTacToeType = 0
 
 interface Props {
@@ -29,7 +31,9 @@ export const Master: React.FC<Props> = (props) => {
       setGameState(message.state)
     })
 
-  }, [])
+  }, [props.socket])
+
+  console.log({ gameState })
 
   return (
     <div>
@@ -41,6 +45,14 @@ export const Master: React.FC<Props> = (props) => {
           { gameState.players.map((p: any) => 
             <p>player: {p.name}</p>
           ) }
+
+          {/* <div>{ JSON.stringify(props.gameState) }</div> */}
+
+          {
+            props.gameState?.state.board && (
+              <Board board={props.gameState.state.board} />
+            )
+          }
         </div>
       )}
 

@@ -24,7 +24,7 @@ const Guest: React.FC<Props> = (props) => {
 
       setGameState(message.state)
     })
-  }, [])
+  }, [props.socket])
 
   return (
     <div>
