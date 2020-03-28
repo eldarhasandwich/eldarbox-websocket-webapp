@@ -36,11 +36,11 @@ const Guest: React.FC<Props> = (props) => {
     })
   }
 
-  // const SendResetCommand = () => {
-  //   props.socket.emit('gameCommand', {
-  //     messageType: 'newGame'
-  //   })
-  // }
+  const SendResetCommand = () => {
+    props.socket.emit('gameCommand', {
+      messageType: 'newGame'
+    })
+  }
 
   return (
     <div>
@@ -69,6 +69,11 @@ const Guest: React.FC<Props> = (props) => {
             board={gameState.state.board}
             placeCommand={SendPlaceCommand} 
           />
+          <button 
+            onClick={() => { SendResetCommand() }}
+          >
+            Reset
+          </button>
         </div>
       )}
       
