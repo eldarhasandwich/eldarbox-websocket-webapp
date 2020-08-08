@@ -20,7 +20,7 @@ export const Master: React.FC<Props> = (props) => {
     props.socket.on('index-gameCreated', (message: any) => {
       console.log('created game', { message })
 
-      setGameState(message.gameObject)
+      setGameState(message.state)
     })
 
     props.socket.on('stateUpdate', (message: any) => {

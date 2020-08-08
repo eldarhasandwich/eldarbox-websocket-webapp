@@ -18,7 +18,7 @@ const Guest: React.FC<Props> = (props) => {
     props.socket.on('index-gameJoined', (message: any) => {
       console.log('game joined', { message })
 
-      setGameState(message.gameObject)
+      setGameState(message.state)
     })
 
     props.socket.on('stateUpdate', (message: any) => {
