@@ -2,7 +2,7 @@ import React from 'react'
 
 import Board from './Board'
 
-const TickTacToeType = 0
+const TickTacToeType = 'ticktacktoe'
 
 interface Props {
   socket: SocketIOClient.Socket
