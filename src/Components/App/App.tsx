@@ -1,12 +1,9 @@
 import React from 'react'
 import useSocketIo from '../../Utils/SocketIo'
 
-import Master from '../TickTacToe/Master'
-import Guest from '../TickTacToe/Guest'
+import Guest from '../TickTacToe'
   
 const App: React.FC = () => {
-
-  const [ clientType, setClientType ] = React.useState<'guest' | 'master'>('guest')
 
   const socket = useSocketIo({
     url: 'http://localhost:1111'
@@ -27,16 +24,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <button onClick={() => setClientType('guest')}>
-        Guest
-      </button>
-
-      <button onClick={() => setClientType('master')}>
-        Master
-      </button>
-
-      { clientType === 'guest' && <Guest socket={socket} /> }      
-      { clientType === 'master' && <Master socket={socket} /> }      
+      <Guest socket={socket} />
     </>
   )
 }
